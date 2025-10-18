@@ -1,11 +1,9 @@
-import SignUpForm from "../components/SignUpForm.jsx";
+import { SignUpForm } from '@components';
 
-function SignUpPage() {
+export const SignUpPage = () => {
   return (
-    <div className="signup_page" id="signupPage">
+    <div className='signup_page' id='signupPage'>
       <SignUpForm />
     </div>
   );
-}
-
-export default SignUpPage;
+};

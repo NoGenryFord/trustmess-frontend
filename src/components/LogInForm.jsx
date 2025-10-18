@@ -1,34 +1,31 @@
-import Button from "./button.jsx";
+import { useNavigate } from 'react-router-dom';
+import { Button } from './Button';
 
-import { useNavigate } from "react-router-dom";
-
-function LogInForm() {
+export const LogInForm = () => {
   const navigate = useNavigate();
 
   return (
     <>
       <form>
-        <div className="form_title">Enter login and password</div>
+        <div className='form_title'>Enter login and password</div>
 
-        <div className="login_label">
+        <div className='login_label'>
           {/* <span>Login:</span> */}
-          <input type="text" placeholder="Username" />
+          <input type='text' placeholder='Username' />
         </div>
 
-        <div className="password_label">
+        <div className='password_label'>
           {/* <span>Password:</span> */}
-          <input type="password" placeholder="Password" />{" "}
+          <input type='password' placeholder='Password' />{' '}
         </div>
 
-        <Button className={"btn log_in_btn"} onClick={() => alert("Button clicked!")}>
+        <Button className={'btn log_in_btn'} onClick={() => alert('Button clicked!')}>
           Log In
         </Button>
-        <Button className={"btn back_btn"} onClick={() => navigate("/")}>
-          Back
-        </Button>
       </form>
+      <Button className={'btn back_btn'} onClick={() => navigate('/')}>
+        <img src='/public/back_ico.svg' alt='Back' />
+      </Button>
     </>
   );
-}
-
-export default LogInForm;
+};

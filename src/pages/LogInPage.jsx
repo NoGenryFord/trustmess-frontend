@@ -1,11 +1,9 @@
-import LogInForm from "../components/LogInForm";
+import { LogInForm } from '@components';
 
-function LogInPage() {
+export const LogInPage = () => {
   return (
-    <div className="login_page" id="loginPage">
+    <div className='login_page' id='loginPage'>
       <LogInForm />
     </div>
   );
-}
-
-export default LogInPage;
+};

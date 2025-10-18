@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@": ["src"],
+      "@api": ["src/api"],
+      "@assets/*": ["src/assets/*"],
+      "@components": ["src/components"],
+      "@helpers": ["src/helpers"],
+      "@hooks": ["src/hooks"],
+      "@pages": ["src/pages"],
+      "@styles/*": ["src/styles/*"],
+      "@utils": ["src/utils"]
+    },
+    "lib": ["ES2024", "dom"],
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2024",
+    "allowJs": true,
+    "checkJs": false,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "types": ["node"],
+    "jsx": "preserve"
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src", "vite.config.js"]
+}

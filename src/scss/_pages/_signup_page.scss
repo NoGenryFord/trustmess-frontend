@@ -1,5 +1,5 @@
-@use "../variables" as *;
-@use "../mixins" as *;
+@use '../variables' as *;
+@use '../mixins' as *;
 .signup_page {
   @include flex_center;
   flex-direction: column;
@@ -49,5 +49,22 @@
 
   .btn {
     @include btn_style_primary;
+  }
+
+  .back_btn {
+    width: auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+    }
   }
 }

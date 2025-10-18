@@ -13,3 +13,6 @@ const updateState = (state, key, data) => {
   };
   console.log(`Updated initialState: `, initialState);
 };
+
+// redux
+// zustand
