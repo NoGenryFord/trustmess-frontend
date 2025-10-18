@@ -29,6 +29,11 @@ function SignUpForm() {
         <Button className={"btn back_btn"} onClick={() => navigate("/")}>
           Back
         </Button>
+
+        {/* Temporary Debag Create User */}
+        <Button className={"btn"} id={"debagCreate"} onClick={() => alert("Ok!")}>
+          Debag Create
+        </Button>
       </form>
     </>
   );
