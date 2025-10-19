@@ -1,4 +1,5 @@
-@use "variables" as *;
+@use 'variables' as *;
+@use 'sass:color';
 
 @mixin flex_center {
   display: flex;
@@ -18,7 +19,7 @@
 
   transition: all 0.3s ease;
   &:hover {
-    background-color: darken($button-background-color-light-theme, 10%);
+    background-color: color.adjust($button-background-color-light-theme, $lightness: -10%);
     cursor: pointer;
   }
 }

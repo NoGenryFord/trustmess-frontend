@@ -19,9 +19,14 @@ export default defineConfig({
   },
 
   server: {
-    host: '127.0.0.1',
-    open: 'http://127.0.0.1:5173',
-    hmr: { host: '127.0.0.1' },
+    host: '127.0.0.1', // 127.0.0.1 is same to localhost
+    // open: 'http://127.0.0.1:5173', // * open web browser on server up
+    open: false,
+    hmr: true,
+    // {
+    //   host: 'localhost',
+    //   port: 5173,
+    // },
   },
 
   css: {

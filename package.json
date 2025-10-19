@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --cors",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -19,7 +19,6 @@
     "react-router-dom": "^7.9.4",
     "sass": "^1.93.2",
     "scss": "^0.2.4",
-    "swiper": "^12.0.2",
     "swr": "^2.3.6"
   },
   "devDependencies": {

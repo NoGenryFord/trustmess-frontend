@@ -24,7 +24,7 @@ export const LogInForm = () => {
         </Button>
       </form>
       <Button className={'btn back_btn'} onClick={() => navigate('/')}>
-        <img src='/public/back_ico.svg' alt='Back' />
+        <img src='/back_ico.svg' alt='Back' />
       </Button>
     </>
   );

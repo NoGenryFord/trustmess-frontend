@@ -2,6 +2,8 @@ import { Button } from '@components';
 
 import { useNavigate } from 'react-router-dom';
 
+import '../scss/_pages/_welcome_page.scss';
+
 export const WelcomePage = () => {
   const navigate = useNavigate();
 
