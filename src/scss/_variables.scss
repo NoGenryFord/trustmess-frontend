@@ -1,22 +1,33 @@
 // Color Palette
+
 // Background Colors
+// Light theme
 $background-color-primary-light-theme: #cee2ff;
 $background-color-secondary-light-theme: #d6e4fa;
-$background-color-primary-dark-theme: #001330;
-$background-color-secondary-dark-theme: #004d40;
+// Dark theme
+$background-color-primary-dark-theme: #080025;
+$background-color-secondary-dark-theme: #0f0533;
+
 // Text Colors
+// Light theme
 $text-color-primary-light-theme: #000000;
 $text-color-secondary-light-theme: #424242;
+
 $text-color-primary-dark-theme: #ffffff;
 $text-color-secondary-dark-theme: #bdbdbd;
+
 // Accent Colors
+// Light theme
 $accent-color-light-theme: #1976d2;
-$accent-color-dark-theme: #90caf9;
+
 // Button Colors
+// Light theme
 $button-background-color-light-theme: #1976d2;
-$button-background-color-dark-theme: #90caf9;
 $button-text-color-light-theme: #ffffff;
-$button-text-color-dark-theme: #000000;
+// Dark theme
+$button-background-color-dark-theme: rgba(197, 35, 202, 0.4);
+$button-text-color-dark-theme: #ffffff;
+
 // Fonst Sizes
 $font-size-small: 18px;
 $font-size-medium: 24px;

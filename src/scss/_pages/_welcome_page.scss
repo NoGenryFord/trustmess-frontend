@@ -1,5 +1,29 @@
-@use "../variables" as *;
-@use "../mixins" as *;
+@use '../variables' as *;
+@use '../mixins' as *;
+@use 'sass:color';
+
+:root[data-theme='dark'] {
+  .welcome_page {
+    background-color: $background-color-primary-dark-theme;
+    color: $text-color-primary-dark-theme;
+
+    .welcome_page_container {
+      background-color: $background-color-secondary-dark-theme;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      background-color: $button-background-color-dark-theme;
+      color: $button-text-color-dark-theme;
+
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: color.adjust($button-background-color-dark-theme, $lightness: 10%);
+        cursor: pointer;
+      }
+    }
+  }
+}
 
 .welcome_page {
   @include flex_center;
@@ -31,6 +55,10 @@
 
     .btn {
       @include btn_style_primary;
+    }
+
+    .change_theme_btn {
+      @include change_theme_btn;
     }
   }
 }

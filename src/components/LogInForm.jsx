@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 
-export const LogInForm = () => {
-  const navigate = useNavigate();
+// Import google material icons
+import '/node_modules/material-icons/iconfont/material-icons.css';
 
+export const LogInForm = () => {
   return (
     <>
       <form>
@@ -23,9 +23,6 @@ export const LogInForm = () => {
           Log In
         </Button>
       </form>
-      <Button className={'btn back_btn'} onClick={() => navigate('/')}>
-        <img src='/back_ico.svg' alt='Back' />
-      </Button>
     </>
   );
 };

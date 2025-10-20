@@ -19,7 +19,7 @@ export default defineConfig({
   },
 
   server: {
-    host: '127.0.0.1', // 127.0.0.1 is same to localhost
+    host: '0.0.0.0', // allow access from local network interfaces
     // open: 'http://127.0.0.1:5173', // * open web browser on server up
     open: false,
     hmr: true,
@@ -47,6 +47,7 @@ export default defineConfig({
       '@api': path.resolve(__dirname, './src/api'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@components': path.resolve(__dirname, './src/components'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
       '@helpers': path.resolve(__dirname, './src/helpers'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@pages': path.resolve(__dirname, './src/pages'),

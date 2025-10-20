@@ -1,9 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 
-export const SignUpForm = () => {
-  const navigate = useNavigate();
-
+export const SignUpForm = ({ theme, onThemeSwitch }) => {
   // formik
 
   return (
@@ -33,9 +30,6 @@ export const SignUpForm = () => {
           Debug Create
         </Button>
       </form>
-      <Button className={'btn back_btn'} onClick={() => navigate('/')}>
-        <img src='/back_ico.svg' alt='Back' />
-      </Button>
     </>
   );
 };
