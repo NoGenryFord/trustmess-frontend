@@ -80,6 +80,11 @@
     gap: 10px;
     padding: 10px;
 
+    transition: all 0.3s ease;
+    &:hover {
+      border: 2px solid $button-background-color-light-theme;
+    }
+
     input {
       @include input_style_primary;
     }
@@ -95,5 +100,33 @@
 
   .back_btn {
     @include back_btn;
+  }
+}
+
+// Styles for validation errors
+.error_message {
+  color: #ff4444;
+  font-size: 0.8rem;
+  // margin-top: 0.25rem;
+  // font-weight: 500;
+}
+
+// Standart form error
+.submit_error {
+  text-align: center;
+  // margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #ffe6e6;
+  border-radius: 0.25rem;
+}
+
+// Red border for div with error
+.login_label.input-error,
+.password_label.input-error {
+  // border-color: #ff4444;
+
+  input::placeholder {
+    color: #ff4444;
+    opacity: 0.8;
   }
 }
