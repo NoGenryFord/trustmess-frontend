@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { configDefaults } from 'vitest/config';
 import react from '@vitejs/plugin-react-swc';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -76,6 +77,13 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 2000,
+  },
+
+  test: {
+    plugins: [react()],
+    globals: true,
+    environment: 'jsdom',
+    exclude: [...configDefaults.exclude, 'e2e/*'],
   },
 
   envDir: '.',
