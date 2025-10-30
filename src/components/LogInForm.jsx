@@ -1,10 +1,11 @@
-import { Button } from './Button';
 // Import formik & YUP (for validation)
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
+import { Button } from './Button';
 import { getUserByName } from '/src/api/requests';
+import { useAuth } from '/src/contexts/AuthContext';
 
 // Validation form
 const loginSchema = Yup.object({
@@ -15,6 +16,7 @@ const loginSchema = Yup.object({
 export const LogInForm = () => {
   // Routing
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   // Submit form
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
@@ -33,6 +35,7 @@ export const LogInForm = () => {
         console.log('Log in was successfull');
         console.log('Go to messeging');
 
+        login(user);
         navigate('/messenger');
       } else {
         console.log('Wrong login or password');

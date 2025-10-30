@@ -3,6 +3,7 @@ import { Button, ContactCard } from '@components';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getUsers } from '/src/api/requests';
+import { useAuth } from '/src/contexts/AuthContext';
 // React-icons
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
@@ -10,6 +11,8 @@ import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import '/src/scss/_pages/_messenger_page.scss';
 
 export const MessengerPage = () => {
+  const { user, isAuthenticated } = useAuth();
+
   const { theme, toggleTheme } = useTheme();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -37,6 +40,8 @@ export const MessengerPage = () => {
   return (
     <div className='messenger_page'>
       <nav className='nav_line' id='navLine'>
+        {/* User Logo */}
+        <div className='auth_user_div'>{user?.username} </div>
         {/* Theme switch */}
         <Button className={'btn change_theme_btn'} dataTheme={theme} onClick={toggleTheme}>
           {theme === 'dark' ? (

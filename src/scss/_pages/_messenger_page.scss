@@ -19,12 +19,22 @@
     width: 100%;
 
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
 
     background-color: var(--surface-bg);
     padding: 10px 15px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+
+    .auth_user_div {
+      font-size: $font-size-medium;
+      padding: 10px 15px;
+      border-radius: 10px;
+      background: var(--btn-bg);
+      color: $button-text-color-light-theme;
+    }
 
     .change_theme_btn {
       @include change_theme_btn;
@@ -59,8 +69,15 @@
         gap: 20px;
 
         border-radius: 15px;
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--box-shadow);
         padding: 10px;
+
+        transition: all 0.2s ease-in;
+        &:hover {
+          background-color: var(--btn-bg);
+          transform: scale(1.02);
+          cursor: pointer;
+        }
 
         .contact_card_container_ico {
           display: flex;
@@ -123,6 +140,8 @@
     --btn-bg: #{$button-background-color-light-theme};
     --btn-fg: #{$button-text-color-light-theme};
     --btn-bg-hover: #{color.adjust($button-background-color-light-theme, $lightness: -10%)};
+
+    --box-shadow: #{0px 2px 8px rgba(0, 0, 0, 0.1)};
   }
 }
 
@@ -135,5 +154,7 @@
     --btn-bg: #{$button-background-color-dark-theme};
     --btn-fg: #{$button-text-color-dark-theme};
     --btn-bg-hover: #{color.adjust($button-background-color-dark-theme, $lightness: 10%)};
+
+    --box-shadow: #{0px 0px 8px rgba(197, 35, 202, 0.4)};
   }
 }
