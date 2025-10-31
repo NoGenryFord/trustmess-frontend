@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from './Button';
-import { getUserByName } from '/src/api/requests';
+import { login } from '/src/api/requests';
 import { useAuth } from '/src/contexts/AuthContext';
 
 // Validation form
@@ -16,36 +16,31 @@ const loginSchema = Yup.object({
 export const LogInForm = () => {
   // Routing
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login: setUser } = useAuth();
 
   // Submit form
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
       console.log('Form values:', values);
-      console.log('Inputed username: ', values.username);
 
       // API Request
-      const getUser = await getUserByName(values.username);
-      const user = getUser[0];
-      console.log('Unpacked user from DB: ', user);
-      console.log('user login: ', user.username);
-      console.log('user password: ', user.password);
+      const response = await login(values);
+      console.log('Full response from server:', response);
 
-      if (values.username === user.username && values.password === user.password) {
-        console.log('Log in was successfull');
-        console.log('Go to messeging');
-
-        login(user);
+      if (response.status === 'success') {
+        console.log('Login successful:', response.user);
+        setUser(response.user);
         navigate('/messenger');
       } else {
-        console.log('Wrong login or password');
+        console.log('Login failed');
         setErrors({ submit: 'Wrong login or password' });
       }
-      setSubmitting(false);
 
-      // End API Request
+      setSubmitting(false);
     } catch (error) {
-      console.error('Something wrong...');
+      console.error('Login error:', error);
+      setErrors({ submit: 'Login failed' });
+      setSubmitting(false);
     }
   };
 
