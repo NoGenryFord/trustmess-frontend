@@ -11,7 +11,7 @@ import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import '/src/scss/_pages/_messenger_page.scss';
 
 export const MessengerPage = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
 
   const { theme, toggleTheme } = useTheme();
   const [users, setUsers] = useState([]);
@@ -51,7 +51,12 @@ export const MessengerPage = () => {
           )}
         </Button>
         {/* Log out btn */}
-        <Button className={'btn btn_log_out'} onClick={() => navigate('/')}>
+        <Button
+          className={'btn btn_log_out'}
+          onClick={() => {
+            logout();
+            navigate('/');
+          }}>
           Log out
         </Button>
       </nav>

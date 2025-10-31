@@ -1,0 +1,61 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+@use 'sass:color';
+
+/* Base layout and styles - colors via CSS variables */
+.loading_page {
+  @include flex_center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  padding: 1% 2%;
+
+  background-color: var(--page-bg);
+  color: var(--text-color);
+
+  .loading_circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 5rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    padding: 20px;
+
+    background-color: #aaa;
+  }
+
+  .btn {
+    @include btn_style_primary;
+  }
+}
+
+/* Theme wrappers set CSS variables used above */
+:root[data-theme='light'] {
+  .messenger_page {
+    --page-bg: #{$background-color-primary-light-theme};
+    --surface-bg: #{$background-color-secondary-light-theme};
+    --text-color: #{$text-color-primary-light-theme};
+
+    --btn-bg: #{$button-background-color-light-theme};
+    --btn-fg: #{$button-text-color-light-theme};
+    --btn-bg-hover: #{color.adjust($button-background-color-light-theme, $lightness: -10%)};
+
+    --box-shadow: #{0px 2px 8px rgba(0, 0, 0, 0.1)};
+  }
+}
+
+:root[data-theme='dark'] {
+  .messenger_page {
+    --page-bg: #{$background-color-primary-dark-theme};
+    --surface-bg: #{$background-color-secondary-dark-theme};
+    --text-color: #{$text-color-primary-dark-theme};
+
+    --btn-bg: #{$button-background-color-dark-theme};
+    --btn-fg: #{$button-text-color-dark-theme};
+    --btn-bg-hover: #{color.adjust($button-background-color-dark-theme, $lightness: 10%)};
+
+    --box-shadow: #{0px 0px 8px rgba(197, 35, 202, 0.4)};
+  }
+}
