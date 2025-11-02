@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from './Button';
 import { login } from '/src/api/requests';
-import { useAuth } from '/src/contexts/AuthContext';
+import { useAuth } from '@contexts';
+// import { useAuth } from '/src/contexts/AuthContext';
 
 // Validation form
 const loginSchema = Yup.object({

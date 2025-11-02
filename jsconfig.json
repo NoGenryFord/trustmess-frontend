@@ -6,6 +6,7 @@
       "@api": ["src/api"],
       "@assets/*": ["src/assets/*"],
       "@components": ["src/components"],
+      "@contexts": ["src/contexts"],
       "@helpers": ["src/helpers"],
       "@hooks": ["src/hooks"],
       "@pages": ["src/pages"],
