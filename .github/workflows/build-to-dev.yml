@@ -1,0 +1,53 @@
+# name: 'Build and push to dev'
+
+# on:
+#   push:
+#     branches:
+#       - 'master'
+#       - 'main'
+
+# permissions:
+#   contents: write
+
+# jobs:
+#   build-and-push:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout source
+#         uses: actions/checkout@v4
+#         with:
+#           persist-credentials: false
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22
+
+#       - name: Install dependencies
+#         run: npm ci # ci -> clean install
+
+#       - name: Build project
+#         run: npm run build
+
+#       - name: Commit and push to dev
+#         env:
+#           PAT: ${{ secrets.PUBLISHING_TEST_TOKEN }}
+#         run: |
+#           git config user.name "github-actions[bot]"
+#           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+#           git checkout --orphan dev
+#           git reset
+
+#           shopt -s extglob
+#           rm -rf !(dist|.git)
+#           shopt -u extglob
+
+#           cp -r dist/* .
+#           rm -rf dist
+
+#           git add -A
+#           git commit -m "Build artifacts"
+
+#           git remote set-url origin https://x-access-token:${PAT}@github.com/${{ github.repository }}
+#           git push -u origin dev --force
