@@ -26,11 +26,11 @@ export const LogInForm = () => {
 
       // API Request
       const response = await login(values);
-      console.log('Successfull response from server:', response.user.username);
+      console.log('Successfull response from server:', response.user);
 
       if (response.status === 'success') {
         console.log('Login Successfull:', response.user.username);
-        setUser(response.user);
+        setUser(response.user, response.access_token);
         navigate('/messenger');
       } else {
         console.log('Login failed');
