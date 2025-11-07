@@ -36,6 +36,14 @@
       color: $button-text-color-light-theme;
     }
 
+    .online_status_div {
+      font-size: $font-size-medium;
+      padding: 10px 15px;
+      border-radius: 10px;
+      background: var(--btn-bg);
+      color: $button-text-color-light-theme;
+    }
+
     .change_theme_btn {
       @include change_theme_btn;
     }

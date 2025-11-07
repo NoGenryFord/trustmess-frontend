@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getUsers } from '/src/api/requests';
 import { useAuth } from '/src/contexts/AuthContext';
+import { useWebSocket } from '/src/contexts/WebSocketContext';
 // React-icons
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
@@ -17,6 +18,12 @@ export const MessengerPage = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const { onlineUsers, isConnected } = useWebSocket();
+
+  // Temporary for testing
+  console.log('🟢 Online users:', onlineUsers);
+  console.log('🔌 Connected:', isConnected);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -43,6 +50,8 @@ export const MessengerPage = () => {
         {/* User Logo */}
         <div className='auth_user_div'>{user?.username} </div>
         {/* Theme switch */}
+        {/* Індикатор статусу */}
+        <div className='online_status_div'>WebSocket: {isConnected ? 'Online' : 'Offline'}</div>
         <Button className={'btn change_theme_btn'} dataTheme={theme} onClick={toggleTheme}>
           {theme === 'dark' ? (
             <MdDarkMode className='theme_ico' />
