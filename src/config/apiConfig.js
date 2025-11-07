@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Get list of URLs drom .env
 const getApiUrls = () => {
-  const urls = import.meta.env.VITE_FASTAPI_SERVER;
+  const urls = import.meta.env.production.VITE_FASTAPI_SERVER;
   if (!urls) {
     return ['http://localhost:8000'];
   }
