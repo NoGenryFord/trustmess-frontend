@@ -23,9 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# .env path
-.env_local
-
-# JSON Storage
-jsonStorage.env
+# .env files - keep sensitive .env files out of git
+# .env - committed to repo for GitHub Actions workflow
 .env.local
+.env_local
