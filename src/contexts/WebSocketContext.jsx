@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { createContext, useContext, useEffect, useState, useRef, useCallback } from 'react';
 import { useAuth } from './AuthContext';
 import { getApiUrl } from '/src/config/apiConfig';
 
@@ -8,10 +8,14 @@ export const WebSocketProvider = ({ children }) => {
   const { user, isAuthenticated } = useAuth();
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
+  const [messages, setMessages] = useState([]);
   const wsRef = useRef(null);
   const shouldReconnect = useRef(true);
   const reconnectAttempts = useRef(0);
   const maxReconnectAttempts = 5; // Maximum 5 reconnection attempts
+
+  // Callback for chat components
+  const messageCallback = useRef(new Map());
 
   useEffect(() => {
     if (isAuthenticated && user) {
@@ -65,6 +69,20 @@ export const WebSocketProvider = ({ children }) => {
         if (data.type === 'online_users') {
           console.log('Updating online users:', data.users);
           setOnlineUsers(data.users);
+        } else if (data.type === 'chat_message') {
+          // Add new message
+          const newMessage = {
+            id: data.message_id,
+            senderId: data.sender_id,
+            recipientId: data.recipient_id,
+            content: data.content,
+            timestamp: data.timestamp,
+          };
+          setMessages((prev) => [...prev, newMessage]);
+
+          messageCallback.current.forEach((callback) => callback(newMessage));
+        } else if (data.type === 'message_sent') {
+          console.log('Message sent confirmation:', data.message_id);
         }
       };
 
@@ -76,7 +94,7 @@ export const WebSocketProvider = ({ children }) => {
         console.log('WebSocket CLOSED:', event.code, event.reason);
         setIsConnected(false);
 
-        // Option: auto reconnect with maximum attempts limit
+        // Auto reconnect with maximum attempts limit
         if (shouldReconnect.current && isAuthenticated && user) {
           if (reconnectAttempts.current < maxReconnectAttempts) {
             reconnectAttempts.current += 1;
@@ -101,6 +119,23 @@ export const WebSocketProvider = ({ children }) => {
     }
   };
 
+  const sendMessage = useCallback((recipientId, content) => {
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+      const message = {
+        type: 'chat_message',
+        recipient_id: recipientId,
+        content: content,
+        timestamp: new Date().toISOString(),
+        message_id: Date.now(),
+      };
+
+      wsRef.current.send(JSON.stringify(message));
+      console.log('Message sent:', message);
+    } else {
+      console.error('WebSocket is not connected');
+    }
+  }, []);
+
   const disconnectWebSocket = () => {
     if (wsRef.current) {
       console.log('Disconnecting WebSocket');
@@ -114,6 +149,9 @@ export const WebSocketProvider = ({ children }) => {
   const value = {
     onlineUsers,
     isConnected,
+    sendMessage,
+    messages,
+    setMessages,
   };
 
   return <WebSocketContext.Provider value={value}>{children}</WebSocketContext.Provider>;
