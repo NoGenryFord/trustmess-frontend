@@ -29,6 +29,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          VITE_FASTAPI_SERVER: ${{ secrets.VITE_FASTAPI_SERVER }}
 
       - name: Deploy to dev branch
         env:
